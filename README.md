@@ -1,23 +1,25 @@
-# 皮卡智能抠图API接口项目示例代码
+# CUTOUT Smart matting API interface project sample code
 
-#### 使用示例
-- 使用命令: git clone https://github.com/picup-shop/api-objective-c-examples.git 克隆下此项目
-- 在PKZNNetwork.m下更改APIKEY，在页面方法调用需要执行的API接口方法即可 注:(*示例代码仅供参考，如需使用请结合项目实际情况做出更改*)
+#### [中文](./README_CN.md)
+
+#### Example of use
+- Use the command: git clone https://github.com/cutout-pro/api-objective-c-examples.git Clone this project
+- Change APIKEY under PKZNNetwork.m, call the API interface method that needs to be executed in the page method. Note: (*Sample code is for reference only, if you need to use it, please make changes according to the actual situation of the project*)
 ```
-//拼接请求URL
+//Splicing request URL
 NSString *urlStr = [NSString stringWithFormat:@"%@/matting?mattingType=6", self.baseUrl];
-//获取图片数据
+//Get image data
 NSURL *fileUrl = [NSBundle.mainBundle URLForResource:@"test" withExtension:@"jpeg"];
 NSData *data = [NSData dataWithContentsOfURL:fileUrl];
 
-//是否裁剪至最小非透明区域 （非必填）
+//Whether to crop to the smallest non-transparent area (not required)
 BOOL crop = 1;
-//填充背景色 （非必填）
+//Fill background color (not required)
 NSString *bgColor = @"000000";
 NSDictionary *params = @{@"crop" : @(crop), @"bgcolor" : bgColor};
 [[PKZNNetwork shared] uploadFileWithUrlString:urlStr parameters:params data:data success:^(id  _Nonnull responseObject) {
     if (responseObject) {
-        //得到处理后的图片
+        //Get the processed picture
         self.handleImage.image = responseObject;
     }
 } failure:^(NSError * _Nonnull error) {
@@ -25,19 +27,13 @@ NSDictionary *params = @{@"crop" : @(crop), @"bgcolor" : bgColor};
 }];
 ```
 
-##### 注：更多API接口的详细信息请参考官网的API文档(示例项目的代码会根据官网的API文档同步更新)
-[皮卡智能抠图](http://www.picup.shop/apidoc-image-matting.html)
+##### Note: For more detailed information about the API interface, please refer to the API documentation on the official website (the code of the sample project will be updated synchronously according to the API documentation on the official website)
+[CUTOUT Smart Cutout](https://www.cutout.pro/api-document/)
 
 ---
-#### 关于我们
-皮卡智能（英文名：PicUP.AI）是杭州王道控股有限公司旗下产品
+#### About us
+Founded in 2018, with a group of technomaniacs, cutout.pro leverages the power of artificial intelligence and computer vision to deliver a wide range of products that make your life much easier and your work more productive.
 
-皮卡智能利用人工智能和计算机视觉的力量，提供各种各样的产品，使您的生活更容易，工作更富有成效。无论是人像裁剪、风格转换、绘画、图像增强、逆向图像搜索利基或通用图像分类、检测或语义分割任务，我们都能满足您的需求。让我们一起让人类变得更聪明！
-
-#### 如有其他需求可以通过以下方式联系我们
-- 邮箱
-pikachu@picup.ai
-- 微信
-roymind
-- 电话
-4001180827
+#### If you have other requirements, please contact us through the following ways
+- email
+  tech@cutout.pro
