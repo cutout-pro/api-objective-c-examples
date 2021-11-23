@@ -23,7 +23,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.baseUrl = @"https://picupapi.tukeli.net/api/v1";
+    self.baseUrl = @"https://www.cutout.pro/api/v1";
     
     // Test object, general, avatar, portrait image
     NSString *path = [[NSBundle mainBundle] pathForResource:@"test.jpeg" ofType:nil];
